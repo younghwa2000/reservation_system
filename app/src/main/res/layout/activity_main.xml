@@ -68,15 +68,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/but_done">
         <Button
             android:id="@+id/but_done"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/but_done"
+            />
+        <TextView
             android:id="@+id/text_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

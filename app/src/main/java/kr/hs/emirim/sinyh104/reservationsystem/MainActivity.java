@@ -1,5 +1,7 @@
 package kr.hs.emirim.sinyh104.reservationsystem;
 
+import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             chrono=(Chronometer)findViewById(R.id.chrono);
             butStart=(Button)findViewById(R.id.but_start);
-            butStart=(Button)findViewById(R.id.but_done);
+            butDone=(Button)findViewById(R.id.but_done);
             radioDate=(RadioButton)findViewById(R.id.radio_date);
             radioTime=(RadioButton)findViewById(R.id.radio_time);
             calView=(CalendarView)findViewById(R.id.calendar);
@@ -49,6 +51,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 calView.setVisibility(View.INVISIBLE);
                 timePick.setVisibility(View.VISIBLE);
+            }
+        });
+
+        butStart.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                chrono.setBase(SystemClock.elapsedRealtime());
+                chrono.start();
+                chrono.setTextColor(Color.RED);
+            }
+        });
+
+        butDone.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                chrono.stop();
+                chrono.setTextColor(Color.BLUE);
+                Calendar cal=Calendar.getInstance();
+                cal.setTimeInMillis(calView.getDate());
+                int year=cal.get(Calendar.YEAR);
+                int month=cal.get(Calendar.MONTH)+1;
+                int date=cal.get(Calendar.DATE);
+                int hour=timePick.getCurrentHour();
+                int minute=timePick.getCurrentMinute();
+                String dateAndTime=year+"년 "+month+"월 "+date+"일 "+hour+"시 "+minute+"분 ";
+                textResult.setText(dateAndTime);
             }
         });
     }
