@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-            super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             chrono=(Chronometer)findViewById(R.id.chrono);
             butStart=(Button)findViewById(R.id.but_start);
@@ -38,5 +35,21 @@ public class MainActivity extends AppCompatActivity {
             textResult=(TextView)findViewById(R.id.text_result);
             timePick.setVisibility(View.INVISIBLE);
             calView.setVisibility(View.INVISIBLE);
+
+        radioDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calView.setVisibility(View.VISIBLE);
+                timePick.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        radioTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calView.setVisibility(View.INVISIBLE);
+                timePick.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
